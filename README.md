@@ -57,7 +57,7 @@ YouTube Data API v3
 ```
 youtube-channel-analytics/
 ├── config/
-│   └── .env                          # API keys and DB credentials (not committed)
+│   └── .env                          # API keys and DB credentials (not committed, gitignored, YOU HAVE TO CREATE)
 ├── dags/
 │   ├── load_youtube_data.py          # Airflow DAG definition
 │   └── watermark.py                  # Watermark tracking & run management
@@ -80,6 +80,9 @@ youtube-channel-analytics/
 ├── data/                             # Auto-created at runtime (gitignored)
 │   ├── bronze/                       # Raw JSONL files
 │   └── silver/                       # Parquet files (hubs/satellites/links)
+├── logs/                     # Required by Airflow
+├── plugins/                  # Required by Airflow
+├── docker-compose.yml        # (optional but recommended)
 ├── requirements.txt
 └── README.md
 ```
@@ -190,7 +193,7 @@ This ensures surrounding history (dates before and after) is never touched.
 - **Python 3.11** installed in WSL virtual environment
 - **PostgreSQL** running on Windows (accessible from WSL)
 - **YouTube Data API v3** key ([Google Cloud Console](https://console.cloud.google.com/))
-- **Apache Airflow 2.10** installed in WSL venv
+- **Apache Airflow 2.10** installed in WSL venv or **Apache airflow Docker Image**
 ---
  
 ## Setup
@@ -221,8 +224,8 @@ YT_API_KEY=your_youtube_api_key_here
 # PostgreSQL — connection from WSL
 PG_HOST_FOR_WSL=172.x.x.x        # IP of Windows host visible from WSL
 PG_HOST_FOR_WINDOWS=localhost
-PG_USER=youtube
-PG_PSWD=youtubeKP2026
+PG_USER=YOUR_USERNAME
+PG_PSWD=YOUR_PASSWORD
 PG_PORT=5432
 PG_DB=your_database_name
 ```
@@ -259,6 +262,19 @@ source ~/.bashrc
 ```
  
 ---
+
+## Airflow Setup
+
+### Recommened: Docker Compose
+
+```bash
+# 1. Create required directories
+mkdir -p logs plugins config
+
+# 2. create file docker-compose 
+# 3. Bashdocker compose up -d
+
+### Alternative way: Directly on WSL (venv) like in this project
  
 ## Running the Pipeline
  
@@ -319,6 +335,7 @@ In the Airflow UI:
    - `channels`: `["@nieinformatyk", "@DataWithBaraa"]` (or any YouTube handles)
    - `mode`: `full` / `incremental` / `reload` / `reload_date`
    - `start_ETL_from`: `bronze` / `silver` / `gold` (skip earlier layers if already processed)
+   - `date_of_data` - logical date
 ---
  
 ## Airflow DAG
