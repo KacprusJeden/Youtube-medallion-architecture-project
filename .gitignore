@@ -1,0 +1,56 @@
+# ================================
+# SECRETS & CREDENTIALS
+# ================================
+config/.env
+*.env
+.env
+
+# ================================
+# DATA FILES (potentially large)
+# ================================
+data/
+
+# ================================
+# PYTHON
+# ================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+env/
+
+# ================================
+# AIRFLOW
+# ================================
+logs/
+airflow-webserver.pid
+airflow.cfg
+airflow.db
+standalone_admin_password.txt
+
+# ================================
+# IDE
+# ================================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ================================
+# OS
+# ================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ================================
+# JUPYTER (jeśli używasz)
+# ================================
+.ipynb_checkpoints/
+*.ipynb

@@ -1,0 +1,40 @@
+C:\Users\kacpe>wsl
+kacpe@DESKTOP-AF6LSOR:/mnt/c/Users/kacpe$ cd ~
+kacpe@DESKTOP-AF6LSOR:~$ echo $AIRFLOW_HOME
+
+kacpe@DESKTOP-AF6LSOR:~$ export AIRFLOW_HOME=/home/kacpe/airflow
+kacpe@DESKTOP-AF6LSOR:~$ export AIRFLOW__CORE__DAGS_FOLDER=/mnt/d/PythonProjects/youtube-channel-analytics/dags
+kacpe@DESKTOP-AF6LSOR:~$ export PYTHONPATH=/mnt/d/PythonProjects/youtube-channel-analytics
+kacpe@DESKTOP-AF6LSOR:~$ export AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow_user:airflow@host.docker.internal:5432/airflow_db
+kacpe@DESKTOP-AF6LSOR:~$ export AIRFLOW__CORE__LOAD_EXAMPLES=False
+kacpe@DESKTOP-AF6LSOR:~$ python -c "from src.bronze import extract; print('SRC OK')"
+Command 'python' not found, did you mean:
+  command 'python3' from deb python3
+  command 'python' from deb python-is-python3
+kacpe@DESKTOP-AF6LSOR:~$ source ~/airflow_env/venv/bin/activate
+(venv) kacpe@DESKTOP-AF6LSOR:~$ python -c "from src.bronze import extract; print('SRC OK')"
+SRC OK
+
+rm /home/kacpe/airflow/airflow-webserver.pid
+
+airflow webserver -p 8081
+
+
+on other cmd window
+C:\Users\kacpe>wsl
+kacpe@DESKTOP-AF6LSOR:/mnt/c/Users/kacpe$ cd ~
+kacpe@DESKTOP-AF6LSOR:~$ echo $AIRFLOW_HOME
+
+kacpe@DESKTOP-AF6LSOR:~$ export AIRFLOW_HOME=/home/kacpe/airflow
+kacpe@DESKTOP-AF6LSOR:~$ export AIRFLOW__CORE__DAGS_FOLDER=/mnt/d/PythonProjects/youtube-channel-analytics/dags
+kacpe@DESKTOP-AF6LSOR:~$ export PYTHONPATH=/mnt/d/PythonProjects/youtube-channel-analytics
+kacpe@DESKTOP-AF6LSOR:~$ export AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow_user:airflow@host.docker.internal:5432/airflow_db
+kacpe@DESKTOP-AF6LSOR:~$ export AIRFLOW__CORE__LOAD_EXAMPLES=False
+kacpe@DESKTOP-AF6LSOR:~$ python -c "from src.bronze import extract; print('SRC OK')"
+Command 'python' not found, did you mean:
+  command 'python3' from deb python3
+  command 'python' from deb python-is-python3
+kacpe@DESKTOP-AF6LSOR:~$ source ~/airflow_env/venv/bin/activate
+(venv) kacpe@DESKTOP-AF6LSOR:~$ python -c "from src.bronze import extract; print('SRC OK')"
+SRC OK
+(venv) kacpe@DESKTOP-AF6LSOR:~$ airflow scheduler
