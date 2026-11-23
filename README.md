@@ -470,8 +470,9 @@ git branch -d feature/your-feature-name
 ```bash
 git checkout -b fix/reload-date-gold-insert
 
-Druga wersja projektu znajduje się w repozytorium: [Youtube-medallion-architecture-project-v2](https://github.com/KacprusJeden/Youtube-medallion-architecture-project-v2)
 git checkout -b feat/silver-video-scd2-reload
 git checkout -b refactor/watermark-pending-runs
 git checkout -b docs/readme-setup-instructions
 ```
+
+The second version of project is located in repo: [Youtube-medallion-architecture-project-v2](https://github.com/KacprusJeden/Youtube-medallion-architecture-project-v2)
